@@ -23,3 +23,9 @@
   - justify-content
   - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
   - https://flexboxfroggy.com
+
+- Resources:
+  - [Getting Started with CSS Rules](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics#Anatomy_of_a_CSS_ruleset)
+  - [All the CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#Keyword_index)
+  - [pseudo-classes and pseudo-elements](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Pseudo-classes_and_pseudo-elements)
+
