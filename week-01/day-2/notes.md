@@ -15,16 +15,20 @@
   - specificity
   - images
 - Prettier
-  - Makes your code formatted nice
-- Flexbox
-  - Control the layout/sizes in one direction
-  - Set on the parent, but effects the children
-  - align-items
-  - justify-content
-  - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-  - https://flexboxfroggy.com
+  - Improves the formatting of your CSS (and later JS)
+- Review at 2
+  - Creating multiple pages
+  - Should I use a new stylesheet for each page?
+  - Centering
+  - Local images
+  - Background Image
+  - Headers and Footers (fixed to top / bottom of page)
+  - Creating a menu
+
+
 
 - Resources:
+  - [Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
   - [Getting Started with CSS Rules](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics#Anatomy_of_a_CSS_ruleset)
   - [All the CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#Keyword_index)
   - [pseudo-classes and pseudo-elements](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Pseudo-classes_and_pseudo-elements)

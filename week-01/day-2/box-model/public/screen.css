@@ -8,18 +8,69 @@ body {
   font: 16px / 1 sans-serif;
 }
 
+header {
+  padding: 2em;
+  font-size: 1.5em;
+  background-color: lightblue;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  border-right: 3px solid black;
+  padding: 1em;
+  background-color: lightgrey;
+}
+
+nav li.last-menu {
+  border: none;
+}
+
+nav li.active a {
+  color: white;
+}
+
+nav li:hover {
+  background-color: grey;
+}
+
+nav a {
+  padding-left: 0.5em;
+  text-decoration: none;
+  color: black;
+}
+
+nav a:hover {
+  border: none;
+}
+
+footer {
+  font-size: 0.5em;
+  text-align: center;
+  background-color: lightblue;
+  padding: 0.8em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 p {
-  color: red;
   margin: 1em;
 }
 
 h1 {
   margin: 1em 2em 3em 4em;
   padding: 20px;
-}
-
-a {
-  font-size: 1.5em;
 }
 
 a:hover {
@@ -35,6 +86,11 @@ img {
 ul,
 ol {
   list-style: none;
+}
+
+/* # means "id", while "." means class */
+#back-link {
+  font-size: 3em;
 }
 
 .rebels {
@@ -61,4 +117,28 @@ ol {
   border: 10px solid red;
 }
 
-/* */
+.about-characters img {
+  display: block;
+  margin: 0 auto;
+}
+
+.about-characters {
+  width: 50%;
+  margin: 8em auto;
+}
+
+/* block
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */
