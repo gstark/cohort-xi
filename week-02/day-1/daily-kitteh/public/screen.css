@@ -1,0 +1,117 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font: 15px / 1 sans-serif;
+  background-color: rgb(59, 136, 158);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(68, 84, 101);
+}
+
+h1 {
+  font-weight: 550;
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-weight: 900;
+}
+
+h3 {
+  margin: 0 auto auto 5px;
+}
+
+p {
+  line-height: 19px;
+}
+
+body.article {
+  display: flex;
+  justify-content: center;
+}
+
+.navigation li {
+  list-style-type: none;
+  padding: 7px 10px;
+}
+
+.navigation li a {
+  color: white;
+}
+
+.footer li a {
+  color: black;
+}
+
+.footer li {
+  padding: 0 15px;
+}
+
+.kitteh-of-day li {
+  color: black;
+  padding: 2px 0;
+}
+
+.footer {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  background-color: rgb(211, 211, 211);
+  padding: 20px 0px;
+  margin-bottom: 0;
+}
+
+.kitteh-of-day {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  font-family: palatino;
+  justify-content: center;
+  height: 50px;
+  padding-bottom: 20px;
+}
+
+.cat-pic {
+  object-fit: contain;
+}
+
+.aside img {
+  width: 192px;
+  height: 200px;
+  object-fit: fill;
+  padding: 4px;
+}
+
+.aside {
+  border: 1px solid rgb(145, 185, 196);
+  margin: 5px 30px 50px 30px;
+  width: 200px;
+}
+
+.main-content main {
+  padding: 0 30px 0 10px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(84, 188, 210);
+}
+
+.content {
+  width: 75%;
+  height: 70%;
+  background-color: rgb(225, 241, 243);
+  margin-top: 3px;
+}
