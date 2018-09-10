@@ -16,6 +16,7 @@ header {
 
 nav ul {
   display: flex;
+  flex-direction: row;
   list-style: none;
   justify-content: space-around;
   border-top: 0.1rem solid black;
@@ -30,4 +31,32 @@ article h1 {
 
 article div {
   margin: 0 3rem;
+}
+
+@media (min-width: 700px) {
+  main {
+    display: flex;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border: none;
+    background-color: grey;
+  }
+
+  nav li {
+    margin: 0.5rem 1rem;
+    padding: 0.2rem;
+    border-bottom: 3px solid #ddd;
+  }
+}
+
+@media (min-width: 1000px) {
+  article {
+    margin: 0 10rem;
+  }
 }
