@@ -115,3 +115,30 @@ body.article {
   background-color: rgb(225, 241, 243);
   margin-top: 3px;
 }
+
+/* Hey CSS, here is a rule for media where the maximum width is 700px */
+@media (max-width: 700px) {
+  /* CSS applies UP TO a max-width of 700px */
+  body {
+    background-color: red;
+  }
+}
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
