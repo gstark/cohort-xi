@@ -1,3 +1,22 @@
+// keep track of how many times we have been clicked
+let clickCount = 0
+
+// little function called clicky that just console logs a message
+const clicky = event => {
+  // Long hand
+  // clickCount = clickCount + 1
+
+  // short hand
+  clickCount += 1
+
+  let message = `Hey, we clicked ${clickCount} times`
+
+  console.log(event.target)
+
+  // event.target is the thing that caused the event that caused the function
+  event.target.textContent = message
+}
+
 // Defines a function, calls it 'main'
 // but does *NOT* execute it yet
 //
@@ -13,6 +32,19 @@ const main = () => {
 
   // For that element, add a question mark
   lastElement.textContent += '?'
+
+  // Hey, document, give me the very first button on the page
+  // by using a CSS selector to match
+  let button = document.querySelector('button.first')
+
+  // Tell that button, when you are clicked, call the function clicky
+  button.addEventListener('click', clicky)
+
+  let button2 = document.querySelector('button.second')
+  button2.addEventListener('click', clicky)
+
+  let button3 = document.querySelector('button.third')
+  button3.addEventListener('click', clicky)
 }
 
 // Tell the document (our page), once you are loaded
