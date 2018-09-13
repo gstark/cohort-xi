@@ -16,15 +16,38 @@ const main = () => {
     { value: 11, face: 'A' }
   ]
 
+  let deck = []
+
   // loop through all the suits
   suits.forEach(suit => {
     // Do this for each suit
 
     // For this suit go through the cards
     cards.forEach(card => {
-      console.log(`The ${card.face} of ${suit} with the value ${card.value}`)
+      // make a new card to put in the deck
+      let newCardForTheDeck = {
+        suit: suit,
+        value: card.value,
+        face: card.face
+      }
+
+      // add it to the deck
+      deck.push(newCardForTheDeck)
     })
   })
+
+  // Shuffle the deck into a random order
+  //
+  // Uses [Fisher–Yates shuffle](https://en.wikipedia.org/wiki/Fisher–Yates_shuffle)
+  for (let i = 52 - 1; i > 1; i -= 1) {
+    let j = Math.floor(Math.random() * i)
+    let firstCard = deck[i]
+    let secondCard = deck[j]
+    deck[i] = secondCard
+    deck[j] = firstCard
+  }
+
+  console.log(deck)
 }
 
 document.addEventListener('DOMContentLoaded', main)
