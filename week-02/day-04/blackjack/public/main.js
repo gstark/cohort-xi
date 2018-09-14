@@ -1,3 +1,18 @@
+let dealerHand = []
+let deck = []
+
+const dealCardToDealer = () => {
+  // Take one card from the deck
+  let card = deck.pop()
+
+  // Place that card in the dealer's hand
+  dealerHand.push(card)
+  let currentDealerCard = document.querySelector(
+    `.dealer-hand .card-${dealerHand.length}`
+  )
+  currentDealerCard.textContent = `The ${card.face} of ${card.suit}`
+}
+
 const main = () => {
   let suits = ['clubs', 'spades', 'diamonds', 'hearts']
   let cards = [
@@ -15,8 +30,6 @@ const main = () => {
     { value: 10, face: 'K' },
     { value: 11, face: 'A' }
   ]
-
-  let deck = []
 
   // loop through all the suits
   suits.forEach(suit => {
@@ -47,7 +60,10 @@ const main = () => {
     deck[j] = firstCard
   }
 
-  console.log(deck)
+  dealCardToDealer()
+  dealCardToDealer()
+
+  document.querySelector('button').addEventListener('click', dealCardToDealer)
 }
 
 document.addEventListener('DOMContentLoaded', main)
