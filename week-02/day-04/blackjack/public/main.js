@@ -1,19 +1,15 @@
 let dealerHand = []
 let deck = []
 
-const dealCardToDealer = () => {
+const dealCardToDealer = upOrDown => {
   // Take one card from the deck
   let card = deck.pop()
 
   // Place that card in the dealer's hand
   dealerHand.push(card)
 
-  // Get the span with the class having card-X where X is how many cards we have
-  // so with the first card it is `card-1` and for second card it is `card-2`
-  // so forth and so on
-  let currentDealerCard = document.querySelector(
-    `.dealer-hand .card-${dealerHand.length}`
-  )
+  // Go find my dealer-hand div
+  const dealerHandDiv = document.querySelector('.dealer-hand')
 
   // Make a new image tag in memory
   let image = document.createElement('img')
@@ -22,8 +18,13 @@ const dealCardToDealer = () => {
   // based on the face and the suit
   image.src = `/images/${card.face}${card.suit}.jpg`
 
-  // Push that image tag into the span as a child
-  currentDealerCard.appendChild(image)
+  if (upOrDown === 'down') {
+    // Do something to display this card down
+    image.src = `/images/Red_back.jpg`
+  }
+
+  // Push that image tag into the DIV as a child
+  dealerHandDiv.appendChild(image)
 }
 
 const main = () => {
@@ -73,10 +74,14 @@ const main = () => {
     deck[j] = firstCard
   }
 
-  dealCardToDealer()
-  dealCardToDealer()
+  dealCardToDealer('up')
+  dealCardToDealer('down')
 
   document.querySelector('button').addEventListener('click', dealCardToDealer)
+
+  document.querySelector('.new-game').addEventListener('click', () => {
+    document.location = '/'
+  })
 }
 
 document.addEventListener('DOMContentLoaded', main)

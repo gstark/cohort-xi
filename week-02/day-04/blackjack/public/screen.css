@@ -14,9 +14,11 @@ body {
 
 .dealer-hand {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
-.card img {
+
+.dealer-hand img {
   width: 150px;
   height: calc(var(--aspect-ratio) * 150);
 }
