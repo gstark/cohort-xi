@@ -7,3 +7,22 @@ body {
   min-height: 100%;
   font: 16px / 1 sans-serif;
 }
+
+:root {
+  --aspect-ratio: 1056px/691;
+}
+
+.card {
+  display: inline-block;
+  width: 50px;
+  height: calc(var(--aspect-ratio) * 50);
+  background-size: contain;
+}
+
+.hearts-2 {
+  background-image: url(/images/2H.jpg);
+}
+
+.clubs-9 {
+  background-image: url(/images/9C.jpg);
+}

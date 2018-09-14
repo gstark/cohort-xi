@@ -7,10 +7,11 @@ const dealCardToDealer = () => {
 
   // Place that card in the dealer's hand
   dealerHand.push(card)
+
   let currentDealerCard = document.querySelector(
     `.dealer-hand .card-${dealerHand.length}`
   )
-  currentDealerCard.textContent = `The ${card.face} of ${card.suit}`
+  currentDealerCard.classList.add(`${card.suit}-${card.face}`)
 }
 
 const main = () => {
