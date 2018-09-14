@@ -21,6 +21,7 @@ const dealCardToDealer = upOrDown => {
   if (upOrDown === 'down') {
     // Do something to display this card down
     image.src = `/images/Red_back.jpg`
+    image.className = 'swing'
   }
 
   // Push that image tag into the DIV as a child
