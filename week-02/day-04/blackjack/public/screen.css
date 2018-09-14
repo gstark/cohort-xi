@@ -12,17 +12,11 @@ body {
   --aspect-ratio: 1056px/691;
 }
 
-.card {
-  display: inline-block;
-  width: 50px;
-  height: calc(var(--aspect-ratio) * 50);
-  background-size: contain;
+.dealer-hand {
+  display: flex;
+  justify-content: space-around;
 }
-
-.hearts-2 {
-  background-image: url(/images/2H.jpg);
-}
-
-.clubs-9 {
-  background-image: url(/images/9C.jpg);
+.card img {
+  width: 150px;
+  height: calc(var(--aspect-ratio) * 150);
 }

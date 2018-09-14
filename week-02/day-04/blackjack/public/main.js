@@ -8,14 +8,26 @@ const dealCardToDealer = () => {
   // Place that card in the dealer's hand
   dealerHand.push(card)
 
+  // Get the span with the class having card-X where X is how many cards we have
+  // so with the first card it is `card-1` and for second card it is `card-2`
+  // so forth and so on
   let currentDealerCard = document.querySelector(
     `.dealer-hand .card-${dealerHand.length}`
   )
-  currentDealerCard.classList.add(`${card.suit}-${card.face}`)
+
+  // Make a new image tag in memory
+  let image = document.createElement('img')
+
+  // Tell that image tag where it's image is. We do this dynamically
+  // based on the face and the suit
+  image.src = `/images/${card.face}${card.suit}.jpg`
+
+  // Push that image tag into the span as a child
+  currentDealerCard.appendChild(image)
 }
 
 const main = () => {
-  let suits = ['clubs', 'spades', 'diamonds', 'hearts']
+  let suits = ['C', 'S', 'D', 'H']
   let cards = [
     { value: 2, face: '2' },
     { value: 3, face: '3' },
