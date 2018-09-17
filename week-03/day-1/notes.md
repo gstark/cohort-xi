@@ -1,0 +1,6 @@
+- Questions from Blackjack:
+  - How to use forEach to count the value of the cards
+    - Guide to `forEach`
+    - Re-explain arguments and `()`
+  - WTF is `reduce` - how does that sum an array?
+  - Allan: `countPlayer`
