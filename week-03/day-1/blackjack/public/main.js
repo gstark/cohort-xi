@@ -26,6 +26,22 @@ const dealCardToDealer = upOrDown => {
 
   // Push that image tag into the DIV as a child
   dealerHandDiv.appendChild(image)
+
+  document.querySelector(
+    '.dealer-hand-value'
+  ).textContent = `The dealers hand is worth ${currentDealerHandValue()}`
+}
+
+const currentDealerHandValue = () => {
+  // add up the dealer hand Value
+  let dealerHandValue = 0
+
+  // Uses built in javascript
+  dealerHand.forEach(card => {
+    dealerHandValue += card.value
+  })
+
+  return dealerHandValue
 }
 
 const main = () => {
@@ -77,6 +93,12 @@ const main = () => {
 
   dealCardToDealer('up')
   dealCardToDealer('down')
+
+  // This uses our own version of `forEach`
+  // suncoastForEach(dealerHand, card => {
+  //   dealerHandValue += card.value
+  // })
+  // console.log('The dealers hand value is ', dealerHandValue)
 
   document.querySelector('button').addEventListener('click', dealCardToDealer)
 
