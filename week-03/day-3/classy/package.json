@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "deploy": "surge ./public --domain classy-gstark.surge.sh",
+    "start": "browser-sync start --server \"public\" --files \"public\""
+  },
+  "dependencies": {
+    "browser-sync": "^2.24.7",
+    "eslint": "^4.13.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "stylelint": "^9.5.0",
+    "stylelint-config-standard": "^18.2.0",
+    "surge": "^0.20.1"
+  }
+}
