@@ -1,0 +1,7 @@
+- algorithm / translating
+- forEach, map, filter, reduce
+  - long way with for
+  - then forEach / map
+- codewars
+- Classes and passing data
+- Structure of the code
