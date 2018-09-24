@@ -1,0 +1,90 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font-size: 17px;
+  font-family: "Noto Serif JP", sans-serif;
+}
+
+header {
+  background-color: rgb(235, 214, 136);
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 1.9rem;
+  margin-top: 25px;
+  max-width: 660px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+header p {
+  color: black;
+  max-width: 750px;
+  line-height: 25px;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+article p {
+  font-size: 0.8rem;
+}
+
+article {
+  width: 250px;
+  height: 350px;
+  padding: 30px 50px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: rgb(235, 214, 136);
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.all-main-content {
+  margin-bottom: 100px;
+}
+
+.intro-article {
+  width: 600px;
+  height: 350px;
+}
+
+.read-more {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  color: black;
+  text-decoration: none;
+}
+
+.read-more-underline {
+  background-color: black;
+  height: 3px;
+  width: 77px;
+  margin-top: 5px;
+}
+
+.article-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.introduction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+}
