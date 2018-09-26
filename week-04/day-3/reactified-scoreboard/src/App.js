@@ -9,8 +9,8 @@ class App extends Component {
     this.state = {
       team1score: 0,
       team2score: 0,
-      team1name: "Team One",
-      team2name: "Team Two"
+      team1name: "",
+      team2name: ""
     };
   }
 
@@ -54,6 +54,22 @@ class App extends Component {
     });
   };
 
+  handleChangingTeamOneName = event => {
+    const name = event.target.value;
+
+    this.setState((state, props) => {
+      return { team1name: name };
+    });
+  };
+
+  handleChangingTeamTwoName = event => {
+    const name = event.target.value;
+
+    this.setState((state, props) => {
+      return { team2name: name };
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -65,7 +81,12 @@ class App extends Component {
             <figure className="score">{this.state.team1score}</figure>
             <ul>
               <li>
-                Update team 1 <input className="teamname" />
+                Update team 1
+                <input
+                  className="teamname"
+                  value={this.state.team1name}
+                  onChange={this.handleChangingTeamOneName}
+                />
                 <button className="update">Update</button>
               </li>
               <li>
@@ -87,8 +108,12 @@ class App extends Component {
             <figure className="score">{this.state.team2score}</figure>
             <ul>
               <li>
-                Update team 2 <input className="teamname" />
-                <button className="update">Update</button>
+                Update team 2{" "}
+                <input
+                  className="teamname"
+                  value={this.state.team2name}
+                  onChange={this.handleChangingTeamTwoName}
+                />
               </li>
               <li>
                 Update Team 2 Score
