@@ -13,6 +13,47 @@ class App extends Component {
       team2name: "Team Two"
     };
   }
+
+  addOneToTeamOne = event => {
+    this.setState((state, props) => {
+      return {
+        team1score: state.team1score + 1
+      };
+    });
+  };
+
+  subtractOneFromTeamOne = event => {
+    this.setState((state, props) => {
+      if (state.team1score === 0) {
+        return {};
+      }
+
+      return {
+        team1score: state.team1score - 1
+      };
+    });
+  };
+
+  addOneToTeamTwo = event => {
+    this.setState((state, props) => {
+      return {
+        team2score: state.team2score + 1
+      };
+    });
+  };
+
+  subtractOneFromTeamTwo = event => {
+    this.setState((state, props) => {
+      if (state.team2score === 0) {
+        return {};
+      }
+
+      return {
+        team2score: state.team2score - 1
+      };
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -29,8 +70,15 @@ class App extends Component {
               </li>
               <li>
                 Update Team 1 Score
-                <button className="add">Add 1</button>
-                <button className="subtract">Subtract 1</button>
+                <button className="add" onClick={this.addOneToTeamOne}>
+                  Add 1
+                </button>
+                <button
+                  className="subtract"
+                  onClick={this.subtractOneFromTeamOne}
+                >
+                  Subtract 1
+                </button>
               </li>
             </ul>
           </div>
@@ -44,8 +92,15 @@ class App extends Component {
               </li>
               <li>
                 Update Team 2 Score
-                <button className="add">Add 1</button>
-                <button className="subtract">Subtract 1</button>
+                <button className="add" onClick={this.addOneToTeamTwo}>
+                  Add 1
+                </button>
+                <button
+                  className="subtract"
+                  onClick={this.subtractOneFromTeamTwo}
+                >
+                  Subtract 1
+                </button>
               </li>
             </ul>
           </div>
