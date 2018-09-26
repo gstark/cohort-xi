@@ -1,6 +1,11 @@
 html {
   height: 100%;
 }
+
+.increasing {
+  color: red;
+}
+
 img {
   max-width: 50px;
   float: left;
