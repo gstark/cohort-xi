@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-
+import Card from "./Card";
 const SYMBOLS = [
   "👹",
   "💩",
@@ -87,24 +87,9 @@ class App extends Component {
       <div className="App">
         <h1>MEMORY</h1>
         <ul className="board">
-          <li class="card unsolved">
-            <div class="content">
-              <div class="front">{this.state.cards[0]}</div>
-              <div class="back" />
-            </div>
-          </li>
-          <li class="card  unsolved">
-            <div class="content">
-              <div class="front">{this.state.cards[1]}</div>
-              <div class="back" />
-            </div>
-          </li>
-          <li class="card  unsolved">
-            <div class="content">
-              <div class="front">{this.state.cards[2]}</div>
-              <div class="back" />
-            </div>
-          </li>
+          <Card picture={this.state.cards[0]} />
+          <Card picture={this.state.cards[1]} />
+          <Card picture={this.state.cards[2]} />
         </ul>
       </div>
     );
