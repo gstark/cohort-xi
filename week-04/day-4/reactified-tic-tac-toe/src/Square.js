@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Square extends Component {
   handleClick = event => {
-    this.props.whatToDoWhenClicked("X", this.props.position);
+    this.props.whatToDoWhenClicked(this.props.position);
   };
 
   render() {
