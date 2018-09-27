@@ -78,19 +78,19 @@ class App extends Component {
     super(props);
 
     this.state = {
-      cards: ["🍿", "🍩", "🛀"]
+      cards: ["🍿", "🍩", "🛀", "🍿", "🍩", "🛀"]
     };
   }
 
   render() {
+    let cards = this.state.cards.map(card => {
+      return <Card picture={card} />;
+    });
+
     return (
       <div className="App">
         <h1>MEMORY</h1>
-        <ul className="board">
-          <Card picture={this.state.cards[0]} />
-          <Card picture={this.state.cards[1]} />
-          <Card picture={this.state.cards[2]} />
-        </ul>
+        <ul className="board">{cards}</ul>
       </div>
     );
   }
