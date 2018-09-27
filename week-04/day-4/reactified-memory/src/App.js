@@ -74,6 +74,14 @@ const SYMBOLS = [
 ];
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      cards: ["🍿", "🍩", "🛀"]
+    };
+  }
+
   render() {
     return (
       <div className="App">
@@ -81,61 +89,19 @@ class App extends Component {
         <ul className="board">
           <li class="card unsolved">
             <div class="content">
-              <div class="front">🍿</div>
+              <div class="front">{this.state.cards[0]}</div>
               <div class="back" />
             </div>
           </li>
           <li class="card  unsolved">
             <div class="content">
-              <div class="front">🍩</div>
+              <div class="front">{this.state.cards[1]}</div>
               <div class="back" />
             </div>
           </li>
           <li class="card  unsolved">
             <div class="content">
-              <div class="front">🛀</div>
-              <div class="back" />
-            </div>
-          </li>
-          <li class="card  unsolved">
-            <div class="content">
-              <div class="front">🛀</div>
-              <div class="back" />
-            </div>
-          </li>
-          <li class="card  unsolved">
-            <div class="content">
-              <div class="front">🛀</div>
-              <div class="back" />
-            </div>
-          </li>
-          <li class="card  unsolved">
-            <div class="content">
-              <div class="front">🛀</div>
-              <div class="back" />
-            </div>
-          </li>
-          <li class="card  unsolved">
-            <div class="content">
-              <div class="front">🛀</div>
-              <div class="back" />
-            </div>
-          </li>
-          <li class="card  unsolved">
-            <div class="content">
-              <div class="front">🛀</div>
-              <div class="back" />
-            </div>
-          </li>
-          <li class="card  unsolved">
-            <div class="content">
-              <div class="front">🛀</div>
-              <div class="back" />
-            </div>
-          </li>
-          <li class="card  unsolved">
-            <div class="content">
-              <div class="front">🛀</div>
+              <div class="front">{this.state.cards[2]}</div>
               <div class="back" />
             </div>
           </li>
