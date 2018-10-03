@@ -40,3 +40,6 @@ ul {
 .App main {
   margin: 2rem;
 }
+.App main img {
+  height: 300px;
+}

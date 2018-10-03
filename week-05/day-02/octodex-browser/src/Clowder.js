@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import Cat from './Cat'
 
 class Clowder extends Component {
   render() {
@@ -8,7 +7,7 @@ class Clowder extends Component {
       <aside>
         <ul>
           {this.props.cats.map(cat => {
-            return <li>{cat.name}</li>
+            return <Cat key={cat.number} number={cat.number} name={cat.name} />
           })}
         </ul>
       </aside>
