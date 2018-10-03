@@ -7,11 +7,9 @@ class Clowder extends Component {
     return (
       <aside>
         <ul>
-          <li>{this.props.cats[0].name}</li>
-          <li>{this.props.cats[1].name}</li>
-          <li>{this.props.cats[2].name}</li>
-          <li>{this.props.cats[3].name}</li>
-          <li>{this.props.cats[4].name}</li>
+          {this.props.cats.map(cat => {
+            return <li>{cat.name}</li>
+          })}
         </ul>
       </aside>
     )
