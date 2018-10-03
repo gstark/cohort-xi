@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 class Cat extends Component {
-  clickedCat = event => {
-    console.log('Clicked a cat', this.props.number)
-
-    this.props.adoptCat(this.props.number)
-  }
-
   render() {
-    return <li onClick={this.clickedCat}>{this.props.name}</li>
+    return (
+      <li>
+        <Link to={`/cats/${this.props.number}`}>{this.props.name}</Link>
+      </li>
+    )
   }
 }
 

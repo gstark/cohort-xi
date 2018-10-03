@@ -24,22 +24,22 @@ ul {
   list-style: none;
 }
 
-.App {
+.CatHQ {
   display: flex;
 }
 
-.App aside li {
+.CatHQ aside li {
   margin: 1rem 0;
   cursor: pointer;
 }
 
-.App aside {
+.CatHQ aside {
   margin: 2rem;
 }
 
-.App main {
+.CatHQ main {
   margin: 2rem;
 }
-.App main img {
+.CatHQ main img {
   height: 300px;
 }

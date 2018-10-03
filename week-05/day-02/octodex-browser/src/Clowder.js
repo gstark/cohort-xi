@@ -7,14 +7,7 @@ class Clowder extends Component {
       <aside>
         <ul>
           {this.props.cats.map(cat => {
-            return (
-              <Cat
-                key={cat.number}
-                adoptCat={this.props.adoptCat}
-                number={cat.number}
-                name={cat.name}
-              />
-            )
+            return <Cat key={cat.number} number={cat.number} name={cat.name} />
           })}
         </ul>
       </aside>
