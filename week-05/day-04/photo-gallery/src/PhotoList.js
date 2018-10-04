@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import Data from './Data.json'
+
 class PhotoList extends Component {
 	render() {
+		console.log(this.props)
+		const category = this.props.match.params.category
 		return (
 			<article>
-				<h1>Panda Bears</h1>
+				<h1>{Data[category].title}</h1>
 				<h2>
-					Pandas are bears native to south-central China, and are objectively
-					the cutest animals on earth.
+					{Data[category].description}
 				</h2>
-				<img src="https://cdn-images-1.medium.com/max/1600/1*i1vVm3EqqDIkyucD0079wg.jpeg" />
-				<a href="">Panda Waving</a>
-				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/2560px-Grosser_Panda.JPG" />
-				<a href="">Großer Panda im Ocean Park, Hongkong</a>
+				{
+					Data[category].photos.map((photo, index) => {
+						return <figure>
+							<img src={photo.imageURL} />
+							<Link to={`/${category}/${index}`}>{photo.title}</Link>
+						</figure>
+					}
+					)
+				}
 			</article>
 		)
 	}
