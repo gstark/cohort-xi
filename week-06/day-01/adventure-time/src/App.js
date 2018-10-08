@@ -38,6 +38,10 @@ const Main = styled.main`
 `;
 
 class App extends React.Component {
+  foo() {
+    this.setState({ foo: "bar" });
+  }
+
   render() {
     return (
       <Router>
@@ -51,7 +55,7 @@ class App extends React.Component {
           </Header>
           <Main>
             <aside>
-              <CharacterList />
+              <Route component={CharacterList} />
             </aside>
             <section>
               <Switch>

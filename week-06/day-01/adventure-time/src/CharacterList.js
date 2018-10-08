@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 const List = styled.ul`
   padding-left: 0;
@@ -8,25 +8,40 @@ const List = styled.ul`
 
 const Character = styled.li`
   list-style: none;
-  ${props =>
-    props.active &&
-    css`
-      a:link,
-      a:visited {
-        color: #fdb825;
-      }
-    `};
+
+  a.active {
+    color: #fdb825;
+  }
 `;
 
-const CharacterList = () => (
-  <List>
-    <Character active>
-      <Link to="/characters/1">Finn the Human</Link>
-    </Character>
-    <Character>
-      <Link to="/characters/2">Jake the Dog</Link>
-    </Character>
-  </List>
-);
+class CharacterList extends React.Component {
+  state = {
+    characters: []
+  };
+
+  componentWillMount() {
+    fetch(
+      "https://gist.githubusercontent.com/ambethia/b4593aece1b66e6508afee1131ae1bc3/raw/"
+    )
+      .then(r => r.json())
+      .then(data => {
+        this.setState({
+          characters: data
+        });
+      });
+  }
+
+  render() {
+    return (
+      <List>
+        {this.state.characters.map((character, idx) => (
+          <Character key={idx}>
+            <NavLink to={`/characters/${idx}`}>{character.name}</NavLink>
+          </Character>
+        ))}
+      </List>
+    );
+  }
+}
 
 export default CharacterList;

@@ -13,21 +13,45 @@ const Portrait = styled.figure`
   margin: 0;
 `;
 
-const Character = () => (
-  <>
-    <Heading>Finn the Human</Heading>
-    <Portrait>
-      <img
-        src="http://i.cdn.turner.com/v5cache/CARTOON/site/Images/i18/propd_at_char_finn.png"
-        alt="Portrait of Finn the Human"
-      />
-    </Portrait>
-    <p>
-      Finn is a silly kid who wants to become a great hero one day. He might not
-      look too tough, but if there's evil around, he'll slay it. That's his
-      deal.
-    </p>
-  </>
-);
+class Character extends React.Component {
+  state = {
+    name: null,
+    image: null,
+    details: null
+  };
+
+  componentWillMount() {
+    this.updateCharacter();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.updateCharacter();
+    }
+  }
+
+  updateCharacter() {
+    fetch(
+      "https://gist.githubusercontent.com/ambethia/b4593aece1b66e6508afee1131ae1bc3/raw/"
+    )
+      .then(r => r.json())
+      .then(data => {
+        this.setState({ ...data[this.props.match.params.id] });
+      });
+  }
+  render() {
+    return this.state.name ? (
+      <>
+        <Heading>{this.state.name}</Heading>
+        <Portrait>
+          <img src={this.state.image} alt={`Portrait of ${this.state.name}`} />
+        </Portrait>
+        <p>{this.state.details}</p>
+      </>
+    ) : (
+      <Heading>Loading...</Heading>
+    );
+  }
+}
 
 export default Character;
