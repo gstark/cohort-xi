@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import SoundBoard from "./SoundBoard";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import library from "./library.json";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <>
+          <nav>
+            <ul>
+              {Object.keys(library).map(key => (
+                <li key={key}>
+                  <NavLink to={`/${key}`}>{library[key].title}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <Route path="/:name" component={SoundBoard} />
+        </>
+      </Router>
     );
   }
 }
