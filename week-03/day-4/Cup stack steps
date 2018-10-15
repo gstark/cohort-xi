@@ -1,0 +1,17 @@
+// cup stack
+// call the stack of the cups stack
+// gently take the first cup off the top of the stack and call it cup 1
+// keep the cup in the direction it is
+// put cup 1 next to the stack directly to the right touching the stack on the table
+// take the next cup off the stack call that cup 2 
+// put cup 2 to the right of cup 1 on the table touching the bottom of the cups
+// take the next cup off the stack called cup 3
+// center cup 3 on top of the middle of cup 1 and cup 2
+// check to see if there is another cup
+// put cup 4 to directly to the right touching cup 1 and cup 2
+// if there are two cups touching put the next cup on the top of the middle of the center of the 2 cups
+// check to see if there are more cups
+// if there are 2 cups touch with no cup on top of them put a cup on the top middle of the 2 cups
+// place the next cup directly at the bottom to the right touching the cups
+// if there are 2 cups touching each other place the cup on the top of the center of the middle of the 2 cups
+// repeat 12-16 until there are no more cups
