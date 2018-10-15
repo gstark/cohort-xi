@@ -1,0 +1,28 @@
+{
+  "adventure": {
+    "title": "Adventure Sounds",
+    "sounds": [
+      {
+        "thumb": "https://steamcdn-a.akamaihd.net/steam/apps/227380/ss_31e31466cde2471cfd9cc32273b320793057c389.1920x1080.jpg?t=1499966366",
+        "sound": "adventure/adventure"
+      },
+      {
+        "thumb": "https://steamcdn-a.akamaihd.net/steam/apps/227380/ss_3fe66d76d8eb9e2ce1b91439a83328d67346df09.600x338.jpg?t=1499966366",
+        "sound": "adventure/bye"
+      }
+    ]
+  },
+  "weird": {
+    "title": "The most normal thing ever",
+    "sounds": [
+      {
+        "thumb": "http://picsum.photos/200/200?random",
+        "sound": "Creepy_Laugh-Adam_Webb-235643261"
+      },
+      {
+        "thumb": "https://stevensegallery.com/200/300",
+        "sound": "a73db5_Velociraptor_Scream_Sound_Effect"
+      }
+    ]
+  }
+}

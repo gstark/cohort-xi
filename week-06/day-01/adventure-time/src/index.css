@@ -1,0 +1,19 @@
+body {
+  background-color: #27acce;
+  color: white;
+  text-shadow: 0.05rem 0.05rem 0 black;
+  font-family: "Patrick Hand", sans-serif;
+  font-size: 22px;
+}
+
+a:link,
+a:visited {
+  color: white;
+}
+
+a:focus,
+a:hover,
+a:active {
+  transform: translate(-0.2rem, -0.2rem);
+  text-shadow: 0.15rem 0.15rem 0 black;
+}
