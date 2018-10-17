@@ -22,7 +22,7 @@
 
 ## Bricks
 
-- Break/disappear when hit by the ball
+- X Break/disappear when hit by the ball
 - Different colors
 - Maybe different sizes
 - Maybe take multiple hits

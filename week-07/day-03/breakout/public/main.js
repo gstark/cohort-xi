@@ -20,11 +20,13 @@ let cursors
 let paddle
 let ball
 let bricks
+let particles
 
 function preload() {
   this.load.image('paddle', 'assets/paddle.png')
   this.load.image('brick', 'assets/brick.png')
   this.load.image('ball', 'assets/ball.png')
+  this.load.image('red', 'assets/red.png')
 }
 
 function update() {
@@ -40,10 +42,24 @@ function update() {
 function paddleHit() {}
 
 function brickHit(ball, brick) {
+  let emitter = particles.createEmitter({
+    speed: 100,
+    scale: { start: 1, end: 0 },
+    blendMode: 'ADD'
+  })
+
+  emitter.startFollow(brick)
+
+  setTimeout(() => {
+    emitter.active = false
+    emitter.visible = false
+  }, 500)
+
   brick.disableBody(true, true)
 }
 
 function create() {
+  particles = this.add.particles('red')
   bricks = this.physics.add.staticGroup()
 
   for (let row = 0; row < 5; row++) {
@@ -64,7 +80,7 @@ function create() {
   ball.body.allowGravity = false
 
   this.physics.add.collider(paddle, ball, paddleHit)
-  this.physics.add.collider(bricks, ball, brickHit)
+  this.physics.add.collider(bricks, ball, brickHit, null, this)
 
   cursors = this.input.keyboard.createCursorKeys()
 }
