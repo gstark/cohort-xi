@@ -16,6 +16,15 @@ let config = {
   }
 }
 
+const initialBallPosition = {
+  x: 0,
+  y: 300,
+  velocityX: 600,
+  velocityY: 600
+}
+
+const paddleVelocity = 600
+
 let cursors
 let paddle
 let ball
@@ -29,13 +38,32 @@ function preload() {
   this.load.image('red', 'assets/red.png')
 }
 
+function resetGame() {
+  bricks.children.entries.forEach(brick => {
+    brick.enableBody(false, null, null, true, true)
+  })
+
+  ball.y = initialBallPosition.y
+  ball.x = initialBallPosition.x
+  ball.setVelocity(initialBallPosition.velocityX, initialBallPosition.velocityY)
+  ball.enableBody(false, null, null, true, true)
+}
+
 function update() {
+  if (ball.y > this.physics.world.bounds.height + ball.body.height) {
+    // Disable the ball and hide it at the top of the game
+    ball.disableBody(true, true)
+    ball.x = 0
+    ball.y = 0
+    setTimeout(resetGame, 200)
+  }
+
   if (cursors.left.isDown) {
-    paddle.setVelocityX(-320)
+    paddle.setVelocityX(-paddleVelocity)
   }
 
   if (cursors.right.isDown) {
-    paddle.setVelocityX(320)
+    paddle.setVelocityX(paddleVelocity)
   }
 }
 
@@ -59,6 +87,10 @@ function brickHit(ball, brick) {
 }
 
 function create() {
+  //  this.physics.arcade.checkCollision.down = false
+
+  this.physics.world.checkCollision.down = false
+  console.log(this.physics.world)
   particles = this.add.particles('red')
   bricks = this.physics.add.staticGroup()
 
@@ -68,15 +100,17 @@ function create() {
     }
   }
 
-  paddle = this.physics.add.sprite(200, 590, 'paddle')
+  paddle = this.physics.add.sprite(200, 550, 'paddle')
   paddle.body.allowGravity = false
   paddle.body.collideWorldBounds = true
   paddle.body.immovable = true
 
-  ball = this.physics.add.sprite(0, 300, 'ball').setScale(0.1)
+  ball = this.physics.add
+    .sprite(initialBallPosition.x, initialBallPosition.y, 'ball')
+    .setScale(0.1)
   ball.setBounce(1)
   ball.setCollideWorldBounds(true)
-  ball.setVelocity(400, 400)
+  ball.setVelocity(initialBallPosition.velocityX, initialBallPosition.velocityY)
   ball.body.allowGravity = false
 
   this.physics.add.collider(paddle, ball, paddleHit)
