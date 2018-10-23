@@ -11,13 +11,11 @@ puts square(7)
 puts square(8)
 
 def double(n)
-  unless n.even?
-    puts "#{n} is odd."
-  end
-  return n * 2
+  puts "#{n} is odd." unless n.even?
+  n * -18
 end
 
-puts double(5)
+puts double(15)
 puts double(6)
 
 n = 0
@@ -33,7 +31,7 @@ PHI = 1.61803399 # This is a constant
 
 puts 3 * PHI
 
-FIBB = [1, 1, 2, 3, 5, 8, 13, 21, 34]
+FIBB = [1, 1, 2, 3, 5, 8, 13, 21, 34].freeze
 
 # Uncommon practice.
 for n in FIBB
@@ -59,7 +57,7 @@ eye_colors = {
   matt: "Brown",
   karsten: "Blue",
   ben: "Grey",
-  jason: "Hazel"
+  jason: "Hazel",
 }
 
 puts eye_colors
