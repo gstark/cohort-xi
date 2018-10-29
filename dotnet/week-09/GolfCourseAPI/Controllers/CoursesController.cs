@@ -11,10 +11,24 @@ namespace GolfCourseAPI.Controllers
     [ApiController]
     public class CoursesController : ControllerBase
     {
-        // [HttpGet]
-        // public ActionResult<IEnumerable<GolfCourse>> Get()
-        // {
-           
-        // }
+        [HttpGet]
+        public ActionResult<IEnumerable<GolfCourse>> Get()
+        {
+            var db = new GolfCourseContext();
+            return db.GolfCourse;
+        }
+
+        [HttpPost]
+        public ActionResult<GolfCourse> Post([FromBody] GolfCourse golfCourse)
+        {
+            // add to my databse
+            var db = new GolfCourseContext();
+            db.GolfCourse.Add(golfCourse);
+            db.SaveChanges();
+            // return the newly created golf course
+            return golfCourse;
+        }
+
+
     }
 }
