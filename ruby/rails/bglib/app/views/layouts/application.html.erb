@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <header>
+      <h1>Game Library</h1>
+      <nav>
+        <ul>
+          <li><%= link_to "Games", games_path %></li>
+          <li><%= link_to "Designers", designers_path %></li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Players</th>
+      <th>Age</th>
+      <th>Published</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.title %></td>
+        <td><%= game.description %></td>
+        <td><%= game.min_players %> - <%= game.max_players %></td>
+        <td><%= game.min_age %></td>
+        <td><%= game.year_published %></td>
+        <td><%= link_to 'Show', game %></td>
+        <td><%= link_to 'Edit', [:edit, game] %></td>
+        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: "Are you sure you want to delete #{game.title}?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path %>

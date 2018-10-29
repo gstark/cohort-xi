@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= @designer.name %>
+</h2>
+
+<p><%= @designer.bio %></p>
+
+<p><img src="<%= @designer.photo_url %>" /></p>
+
+<%= link_to 'Edit', edit_designer_path(@designer) %> |
+<%= link_to 'Back', designers_path %>
