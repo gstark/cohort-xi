@@ -26,7 +26,15 @@ namespace GolfCourseAPI
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {}
+        {
+            modelBuilder.Entity<GolfCourse>().HasData(
+
+                new GolfCourse{ Id =12, Name = "Harrisburg"}, 
+                new GolfCourse{ Id =11, Name = "Boise"}, 
+                new GolfCourse{ Id =10, Name = "New Orleans"}
+            );
+
+        }
 
 
         public DbSet<GolfCourse> GolfCourse { get; set; }
