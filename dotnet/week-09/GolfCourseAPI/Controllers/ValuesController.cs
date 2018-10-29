@@ -12,16 +12,16 @@ namespace GolfCourseAPI.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<object> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new {Id=1,Name="Billy", FavoriteFood ="Tacos" };
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<string> Get(string id)
         {
-            return "value";
+            return $"The id you passed me was {id}";
         }
 
         // POST api/values
