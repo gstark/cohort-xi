@@ -12,6 +12,8 @@ namespace MoreHelloWorld
             // Arrays?
             var arr = new int[10];
 
+            System.Console.WriteLine($"the type of an array is {arr.GetType()}");
+
             arr[3] = 10;
             arr[0] = 5;
 
@@ -60,6 +62,9 @@ namespace MoreHelloWorld
                 HasHook = false
             };
 
+
+          
+
             var poleCollection = new List<FishingPole> { pole1, pole2, pole3, pole4 };
 
             // I want all my poles that have a length > 10 => filter
@@ -84,10 +89,10 @@ namespace MoreHelloWorld
 
             // Give me the Brand of all the poles that a hook
             var poles = poleCollection
-                    .
+                    
                     .Where(w => w.HasHook)
                     .OrderByDescending(o => o.Brand)
-                    .Select(s => s.Brand)
+                    .Select(s => s.Brand);
 
 
             // Sorting!
