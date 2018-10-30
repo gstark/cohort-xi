@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @review.game %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @review.title %>
+</p>
+
+<p>
+  <strong>Youtube:</strong>
+  <%= @review.youtube_id %>
+</p>
+
+<%= link_to 'Edit', [:edit, @game, @review] %> |
+<%= link_to 'Back', [@game, :reviews] %>

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_29_160519) do
+ActiveRecord::Schema.define(version: 2018_10_30_151707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "game_id"
+    t.string "author"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_comments_on_game_id"
+  end
 
   create_table "designers", force: :cascade do |t|
     t.string "name"
@@ -36,5 +45,16 @@ ActiveRecord::Schema.define(version: 2018_10_29_160519) do
     t.index ["designer_id"], name: "index_games_on_designer_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "game_id"
+    t.string "title"
+    t.string "youtube_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_reviews_on_game_id"
+  end
+
+  add_foreign_key "comments", "games"
   add_foreign_key "games", "designers"
+  add_foreign_key "reviews", "games"
 end
