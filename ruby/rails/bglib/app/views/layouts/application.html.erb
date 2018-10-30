@@ -7,18 +7,43 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
   </head>
 
   <body>
-    <header>
-      <h1>Game Library</h1>
-      <nav>
-        <ul>
-          <li><%= link_to "Games", games_path %></li>
-          <li><%= link_to "Designers", designers_path %></li>
-        </ul>
-      </nav>
-    </header>
-    <%= yield %>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <strong>Boardgame Library</strong>
+          </a>
+
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <%= link_to "Games", games_path, { class: "navbar-item" } %>
+            <%= link_to "Designers", designers_path, { class: "navbar-item" } %>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="container">
+        <% if notice %>
+          <article class="message is-primary">
+            <div class="message-body">
+              <%= notice %>
+            </div>
+          </article>
+        <% end %>
+        <%= yield %>
+      </div>
+    </section>
   </body>
 </html>
