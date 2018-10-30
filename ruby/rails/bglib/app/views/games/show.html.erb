@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h2><%= @game.title %></h2>
 
 <p><%= @game.description %></p>
@@ -7,6 +5,7 @@
 <% if @game.designer %>
   <p><%= link_to @game.designer.name, @game.designer %></p>
 <% end %>
+
 
 <p>
   <strong>Min players:</strong>
@@ -27,6 +26,53 @@
   <strong>Year published:</strong>
   <%= @game.year_published %>
 </p>
+
+<ul>
+  <% @game.reviews.each do |review| %>
+    <li>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= review.youtube_id %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </li>
+  <% end %>
+</ul>
+
+<section class="section">
+  <h3 class="subtitle">Comments</h3>
+
+  <ul>
+    <% @game.comments.each do |comment| %>
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong><%= comment.author %></strong> <small><%= time_ago_in_words comment.created_at %> ago</small>
+              <br>
+              <%= comment.message %>
+            </p>
+          </div>
+        </div>
+        <div class="media-right">
+          <%= link_to([@game, comment], method: :delete, data: { confirm: "Are you sure you want to delete this comment?" }) do %>
+            <button class="delete"></button>
+          <% end %>
+        </div>
+      </article>
+    <% end %>
+  </ul>
+
+  <%= form_with(model: [@game, Comment.new], local: true) do |form| %>
+    <div class="field">
+      <%= form.label :author %>
+      <%= form.text_field :author %>
+    </div>
+    <div class="field">
+      <%= form.label :message %>
+      <%= form.text_area :message %>
+    </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</section>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
