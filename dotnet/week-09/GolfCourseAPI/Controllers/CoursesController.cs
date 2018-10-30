@@ -47,6 +47,24 @@ namespace GolfCourseAPI.Controllers
         
         }
 
+        [HttpPut("{id}")]
+        public ActionResult<GolfCourse> Put([FromRoute]int id, [FromBody] GolfCourse updatedData)
+        {
+            // TODO: The actual update
+            var db = new GolfCourseContext();
+            var golfCourse = db.GolfCourse.FirstOrDefault(course => course.Id == id);
+
+            golfCourse.Location = updatedData.Location;
+            golfCourse.Name = updatedData.Name;
+            golfCourse.NumberOfHoles = updatedData.NumberOfHoles;
+            golfCourse.Rank = updatedData.Rank;
+            golfCourse.TotalYards = updatedData.TotalYards;
+            golfCourse.Par = updatedData.Par;
+        
+            db.SaveChanges();
+
+            return golfCourse;
+        }
 
     }
 }
