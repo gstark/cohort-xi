@@ -1,11 +1,13 @@
 class GamesController < ApplicationController
-  before_action set_game, only: [:show]
+  before_action :set_game, only: [:show]
 
   def index
     @games = Game.all
+    render json: @games
   end
 
   def show
+    render json: @game
   end
 
   def new
@@ -15,9 +17,10 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
-      redirect_to @game, notice: "Game created."
+      # redirect_to @game, notice: "Game created."
+      render json: @game
     else
-      render :new
+      render json: {errors: @game.errors.full_messages, game: @game}
     end
   end
 
