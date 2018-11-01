@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= link_to game.title, game %></td>
+        <td><%= game.publication_year %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New Game", new_game_path %>
