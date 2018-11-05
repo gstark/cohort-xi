@@ -1,4 +1,5 @@
 ﻿using System;
+using CoffeeShipAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -26,5 +27,9 @@ namespace CoffeeShipAPI
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {}
+
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Franchise> Franchises { get; set; }
+
     }
 }
