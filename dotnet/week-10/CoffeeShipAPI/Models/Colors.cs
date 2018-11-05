@@ -8,6 +8,7 @@ namespace CoffeeShipAPI.Models
         GREEN, 
         BLUE,
         INDIGO, 
-        VIOLET
+        VIOLET, 
+        BLACK
     }
 }
