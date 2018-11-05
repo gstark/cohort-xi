@@ -32,3 +32,17 @@
     transform: rotate(360deg);
   }
 }
+
+/* Bulma Overrides */
+.navbar{
+  display: flex;
+  justify-content: center;
+}
+
+.search-form{
+  margin-top:1em;
+}
+
+.coffee-shop-list .card{
+  margin:1em;
+}
