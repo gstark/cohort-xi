@@ -18,6 +18,13 @@ namespace GolfCourseAPI.Controllers
             return db.GolfCourse;
         }
 
+        [HttpGet("{zebra}")]
+        public IEnumerable<GolfCourse> GetByWoozal(string zebra)
+        {
+            var db = new GolfCourseContext();
+            return db.GolfCourse.Where(w => w.Location.ToLower() == zebra.ToLower());
+        }
+
         [HttpPost]
         public ActionResult<GolfCourse> Post([FromBody] GolfCourse golfCourse)
         {
