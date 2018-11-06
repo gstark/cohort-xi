@@ -38,7 +38,7 @@ Comments on restaurant and/or reviews
 
 NOTE: All users are visitors, but not all visitors are users.
 
-- [ ] Visitors can search for restaurants
+- [x] Visitors can search for restaurants
 - [ ] Visitors can read reviews for restaurants
 - [ ] Visitors can become Users by signing up.
 - [ ] Users can write reviews for restaurants
