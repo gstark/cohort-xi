@@ -20,6 +20,7 @@ class Api::RestaurantsController < ApplicationController
         name: r.name,
         location: r.location,
         budget: r.budget,
+        slug: r.slug,
         category: {
           id: r.category.id,
           name: r.category.name,
@@ -37,6 +38,7 @@ class Api::RestaurantsController < ApplicationController
       location: @restaurant.location,
       budget: @restaurant.budget,
       description: @restaurant.description,
+      slug: @restaurant.slug,
       category: {
         id: @restaurant.category.id,
         name: @restaurant.category.name,

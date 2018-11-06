@@ -35,7 +35,7 @@ class RestaurantList extends Component {
               <div className="card">
                 <header className="card-header">
                   <p className="card-header-title">
-                    <Link to={`/restaurants/${r.id}`}>{r.name}</Link>
+                    <Link to={`/restaurants/${r.id}-${r.slug}`}>{r.name}</Link>
                   </p>
                   <span className="card-header-icon">
                     {"$".repeat(r.budget)}
