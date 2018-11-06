@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import SplashPage from './Pages/Splash'
+// import SplashPage from './Pages/Splash'
 import HomePage from './Pages/Home'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
