@@ -38,12 +38,12 @@ Comments on restaurant and/or reviews
 
 NOTE: All users are visitors, but not all visitors are users.
 
-- Visitors can search for restaurants
-- Visitors can read reviews for restaurants
-- Visitors can become Users by signing up.
-- Users can write reviews for restaurants
-- User can write reviews that only include a rating
+- [x] Visitors can search for restaurants
+- [ ] Visitors can read reviews for restaurants
+- [ ] Visitors can become Users by signing up.
+- [ ] Users can write reviews for restaurants
+- [ ] User can write reviews that only include a rating
 
-* Admins can add restaurants
-* Admins can add categories
-* Admins can moderate reviews
+* [x] Admins can add restaurants
+* [x] Admins can add categories
+* [ ] Admins can moderate reviews
