@@ -21,7 +21,14 @@ namespace CoffeeShipAPI.Controllers
       var db = new CoffeeShopFinderContext();
 
       //connect to database v
-      var results = db.Locations.Include(i => i.Franchise).Where(w => w.Franchise.Brand.ToLower().Contains(searchTerm.ToLower()));
+      var results = db.Locations.Include(i => i.Franchise)
+      .Where(w =>
+      w.Franchise.Brand.ToLower().Contains(searchTerm.ToLower()) ||
+      w.City.ToLower().Contains(searchTerm.ToLower()) ||
+      w.Zip.Contains(searchTerm)
+      );
+
+
 
 
 
