@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import PriceRange from "./Components/PriceRange";
 
 class Location extends Component {
   state = {
@@ -37,7 +38,7 @@ class Location extends Component {
           <section className="information">
             <h1>{this.state.location.franchise.brand}</h1>
             <h3>{this.state.location.address}</h3>
-            <h3>{this.state.location.priceRange}</h3>
+            <PriceRange priceRange={this.state.location.priceRange} />
             <h3>{this.state.location.franchise.isLocal}</h3>
           </section>
         </section>
