@@ -51,5 +51,7 @@ namespace CoffeeShipAPI
         public DbSet<Location> Locations { get; set; }
         public DbSet<Franchise> Franchises { get; set; }
 
+        public DbSet<Review> Reviews {get;set;}
+
     }
 }

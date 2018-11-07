@@ -21,7 +21,7 @@ class Location extends Component {
   submitReview = (e) => {
     e.preventDefault();
     axios.post(`https://localhost:5001/api/locations/${this.props.match.params.id}/reviews`, {
-      review: this.state.newReview
+      content: this.state.newReview
     }).then(json => {
       console.log({json})
     })
