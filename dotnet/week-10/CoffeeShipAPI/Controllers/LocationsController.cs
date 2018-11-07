@@ -7,15 +7,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CoffeeShipAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class LocationsController : ControllerBase
+  [Route("api/[controller]")]
+  [ApiController]
+  public class LocationsController : ControllerBase
+  {
+    [HttpGet]
+    public ActionResult GetAction()
     {
-        [HttpGet]
-        public ActionResult GetAction()
-        {
-            var db = new CoffeeShopFinderContext();
-            return Ok(db.Locations.Include(i => i.Franchise).OrderBy(o => o.Zip));
-        }
+      var db = new CoffeeShopFinderContext();
+      return Ok(db.Locations.Include(i => i.Franchise).OrderBy(o => o.Zip));
     }
+    [HttpGet("{id}")]
+    public ActionResult GetALocation([FromRoute] int id)
+    {
+      var db = new CoffeeShopFinderContext();
+      return Ok(db.Locations
+      .Include(i => i.Franchise)
+      .SingleOrDefault(s => s.Id == id));
+    }
+  }
 }

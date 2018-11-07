@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class Location extends Component {
+  state = {
+    location: {
+      franchise: {}
+    }
+  };
+
   componentDidMount() {
     axios
-      .get(`https://localhost:5001/api/location/${this.props.match.params.id}`)
+      .get(`https://localhost:5001/api/locations/${this.props.match.params.id}`)
       .then(json => {
-        console.log(json);
+        this.setState({ location: json.data });
       });
   }
 
@@ -14,7 +20,12 @@ class Location extends Component {
     return (
       <div>
         <section className="top-section">
-          <img src="http://placekitten.com/200/200" />
+          <figure class="image is-128x128">
+            <img
+              alt={this.state.location.franchise.brand}
+              src={this.state.location.imageUrl}
+            />
+          </figure>
           {/* {"*"
             .repeat(25)
             .split("")
@@ -24,9 +35,10 @@ class Location extends Component {
               return <img src={`http://placekitten.com/${x}/${y}`} />;
             })} */}
           <section className="information">
-            <h1>Starbucks</h1>
-            <h3>123 fake street</h3>
-            <h3>$$</h3>
+            <h1>{this.state.location.franchise.brand}</h1>
+            <h3>{this.state.location.address}</h3>
+            <h3>{this.state.location.priceRange}</h3>
+            <h3>{this.state.location.franchise.isLocal}</h3>
           </section>
         </section>
         <section className="middle-section">
