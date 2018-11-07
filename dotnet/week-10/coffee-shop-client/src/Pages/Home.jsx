@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 class HomePage extends Component {
   state = {
     locations: [],
@@ -90,7 +91,7 @@ class HomePage extends Component {
                       {/* <li>Hours:9pm -10pm</li> */}
                     </ul>
                     <br />
-                    <a href="/details">more details</a>
+                    <Link to={`/location/${shop.id}`}>More Details</Link>
                   </div>
                 </div>
               </div>

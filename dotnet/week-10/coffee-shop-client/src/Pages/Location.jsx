@@ -1,11 +1,28 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Location extends Component {
+  componentDidMount() {
+    axios
+      .get(`https://localhost:5001/api/location/${this.props.match.params.id}`)
+      .then(json => {
+        console.log(json);
+      });
+  }
+
   render() {
     return (
       <div>
         <section className="top-section">
           <img src="http://placekitten.com/200/200" />
+          {/* {"*"
+            .repeat(25)
+            .split("")
+            .map(() => {
+              const x = Math.floor(Math.random() * 100) + 400;
+              const y = Math.floor(Math.random() * 100) + 300;
+              return <img src={`http://placekitten.com/${x}/${y}`} />;
+            })} */}
           <section className="information">
             <h1>Starbucks</h1>
             <h3>123 fake street</h3>
