@@ -1,4 +1,4 @@
-@import '../node_modules/bulma/css/bulma.min.css';
+@import "../node_modules/bulma/css/bulma.min.css";
 
 .App {
   text-align: center;
@@ -34,15 +34,40 @@
 }
 
 /* Bulma Overrides */
-.navbar{
+.navbar {
   display: flex;
   justify-content: center;
 }
 
-.search-form{
-  margin-top:1em;
+.search-form {
+  margin-top: 1em;
 }
 
-.coffee-shop-list .card{
-  margin:1em;
+.coffee-shop-list .card {
+  margin: 1em;
+}
+.top-section,
+.middle-section {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+.top-section img,
+.top-section .information {
+  margin: 1.5em;
+}
+.middle-section section {
+  margin: 1.5em;
+}
+.add-rating-button {
+  border-radius: 25%;
+  margin: 1em;
+}
+.add-review-button {
+  margin: 1em;
+}
+.bottom-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
