@@ -20,7 +20,12 @@ class App extends Component {
   };
   handleSearch = e => {
     e.preventDefault();
-    window.location.replace(`/search/${this.state.searchTerm}`);
+    if (this.state.searchTerm){
+      window.location.replace(`/search/${this.state.searchTerm}`);
+    } else {
+      window.location.replace(`/`);
+
+    }
   };
 
   render() {
@@ -67,7 +72,7 @@ class App extends Component {
                 />
               </div>
               <div className="control">
-                <a className="button is-info">Search</a>
+                <button type="submit" className="button is-info">Search</button>
               </div>
               <div className="control">
                 <a className="button is-primary">Near me</a>

@@ -1,8 +1,13 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CoffeeShipAPI.Models
 {
     public class Location
     {
         public int Id { get; set; }
+
+        [NotMapped]
+        public string BrandName => Franchise != null ? Franchise.Brand : "No name found";
 
         public string Address { get; set; }
         public string City { get; set; }
