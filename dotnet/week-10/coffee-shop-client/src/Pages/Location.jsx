@@ -5,9 +5,27 @@ import PriceRange from "./Components/PriceRange";
 class Location extends Component {
   state = {
     location: {
-      franchise: {}
+      imageUrl:"https://placebear.com/128/128",
+      franchise: {
+        brand:"..."
+      }
     }
   };
+
+  onReviewChange = (e) => {
+    this.setState({
+      newReview: e.target.value
+    })
+  }
+
+  submitReview = (e) => {
+    e.preventDefault();
+    axios.post(`https://localhost:5001/api/locations/${this.props.match.params.id}/reviews`, {
+      review: this.state.newReview
+    }).then(json => {
+      console.log({json})
+    })
+  }
 
   componentDidMount() {
     axios
@@ -61,9 +79,9 @@ class Location extends Component {
           </section>
         </section>
         <section className="bottom-section">
-          <form>
+          <form onSubmit={this.submitReview}>
             <header>Reviews!?!?!</header>
-            <textarea />
+            <textarea onChange={this.onReviewChange} placeholder={`Leave a review for ${this.state.location.franchise.brand}`}/>
             <button className="button is-primary add-review-button">
               Submit
             </button>
