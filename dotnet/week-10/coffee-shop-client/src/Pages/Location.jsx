@@ -5,11 +5,12 @@ import PriceRange from "./Components/PriceRange";
 class Location extends Component {
   state = {
     location: {
-      imageUrl:"https://placebear.com/128/128",
+      imageUrl: "https://placebear.com/128/128",
       franchise: {
-        brand:"..."
-      }
-    }
+        brand: "..."
+      },
+    },
+    reviews: []
   };
 
   onReviewChange = (e) => {
@@ -23,8 +24,18 @@ class Location extends Component {
     axios.post(`https://localhost:5001/api/locations/${this.props.match.params.id}/reviews`, {
       content: this.state.newReview
     }).then(json => {
-      console.log({json})
+      this.getReviews();
     })
+  }
+
+  getReviews = () => {
+    axios
+      .get(`https://localhost:5001/api/locations/${this.props.match.params.id}/reviews`)
+      .then(json => {
+        this.setState({
+          reviews: json.data
+        })
+      })
   }
 
   componentDidMount() {
@@ -33,6 +44,8 @@ class Location extends Component {
       .then(json => {
         this.setState({ location: json.data });
       });
+    this.getReviews();
+
   }
 
   render() {
@@ -81,16 +94,45 @@ class Location extends Component {
         <section className="bottom-section">
           <form onSubmit={this.submitReview}>
             <header>Reviews!?!?!</header>
-            <textarea onChange={this.onReviewChange} placeholder={`Leave a review for ${this.state.location.franchise.brand}`}/>
+            <textarea onChange={this.onReviewChange} placeholder={`Leave a review for ${this.state.location.franchise.brand}`} />
             <button className="button is-primary add-review-button">
               Submit
             </button>
           </form>
           <ul>
-            <li>Review: This place is amazing!!!</li>
-            <li>Review: This place is a dump!!!</li>
-            <li>Review: This place is the beez kneez!!!</li>
-            <li>Review: This place is horrid!!!</li>
+            {this.state.reviews.map(review => {
+              return <li><article class="media">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img src="https://bulma.io/images/placeholders/128x128.png" />
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      {review.content}
+                    </p>
+                    <br />
+                    <p>
+                      {review.createAt}
+                    </p>
+                  </div>
+                  <nav class="level is-mobile">
+                    <div class="level-left">
+                      <a class="level-item">
+                        <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                      </a>
+                      <a class="level-item">
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                      </a>
+                      <a class="level-item">
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+              </article></li>
+            })}
           </ul>
         </section>
       </div>
