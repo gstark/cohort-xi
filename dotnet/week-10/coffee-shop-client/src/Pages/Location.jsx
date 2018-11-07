@@ -21,7 +21,7 @@ class Location extends Component {
     return (
       <div>
         <section className="top-section">
-          <figure class="image is-128x128">
+          <figure className="image is-128x128">
             <img
               alt={this.state.location.franchise.brand}
               src={this.state.location.imageUrl}
@@ -39,7 +39,11 @@ class Location extends Component {
             <h1>{this.state.location.franchise.brand}</h1>
             <h3>{this.state.location.address}</h3>
             <PriceRange priceRange={this.state.location.priceRange} />
-            <h3>{this.state.location.franchise.isLocal}</h3>
+            <h3>
+              {this.state.location.franchise.isLocal === true
+                ? "Local"
+                : "National"}
+            </h3>
           </section>
         </section>
         <section className="middle-section">

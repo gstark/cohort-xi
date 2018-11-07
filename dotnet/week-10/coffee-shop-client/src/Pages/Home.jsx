@@ -3,12 +3,18 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 class HomePage extends Component {
   state = {
-    locations: [],
-    searchTerm: ""
+    locations: []
   };
 
   componentDidMount() {
-    axios.get("https://localhost:5001/api/locations").then(json => {
+    let _url = "https://localhost:5001/api";
+    console.log(this.props);
+    if (this.props.match.params.searchterm) {
+      _url += `/search?searchTerm=${this.props.match.params.searchterm}`;
+    } else {
+      _url += `/locations`;
+    }
+    axios.get(_url).then(json => {
       console.log({ json });
       this.setState({
         locations: json.data
@@ -16,46 +22,9 @@ class HomePage extends Component {
     });
   }
 
-  handleSearchTermUpdate = e => {
-    this.setState({ searchTerm: e.target.value });
-  };
-
-  handleSearch = e => {
-    e.preventDefault();
-    axios
-      .get(
-        `https://localhost:5001/api/search?searchTerm=${this.state.searchTerm}`
-      )
-      .then(json => {
-        console.log({ json });
-        this.setState({
-          locations: json.data
-        });
-      });
-  };
-
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSearch} className="search-form">
-          <div className="field has-addons">
-            <div className="control">
-              <input
-                onChange={this.handleSearchTermUpdate}
-                className="input"
-                type="text"
-                placeholder="Find a coffee harbor"
-              />
-            </div>
-            <div className="control">
-              <a className="button is-info">Search</a>
-            </div>
-            <div className="control">
-              <a className="button is-primary">Near me</a>
-            </div>
-          </div>
-        </form>
-
         <section className="coffee-shop-list">
           {this.state.locations.map(shop => {
             return (
