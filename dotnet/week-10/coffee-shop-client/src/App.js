@@ -20,21 +20,8 @@ class App extends Component {
   };
   handleSearch = e => {
     e.preventDefault();
-    this.setState({
-      redirect: true
-    });
+    window.location.replace(`/search/${this.state.searchTerm}`);
   };
-
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to={`/search/${this.state.searchTerm}`} />;
-    }
-  };
-  componentDidMount() {
-    this.setState({
-      redirect: false
-    });
-  }
 
   render() {
     return (
@@ -93,7 +80,6 @@ class App extends Component {
             <Route path="/location/:id" exact component={Location} />
             <Route path="/search/:searchterm" exact component={HomePage} />
             {/* <Route path="/home" exact component={HomePage}/> */}
-            {this.renderRedirect()}
           </Switch>
         </>
       </Router>
