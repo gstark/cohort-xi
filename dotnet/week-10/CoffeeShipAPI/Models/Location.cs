@@ -20,6 +20,8 @@ namespace CoffeeShipAPI.Models
 
         public PriceRange PriceRange { get; set; }
 
+        public float AverageRating { get; set; } = 0;
+
         public string ImageUrl { get; set; }
 
         public int FranchiseId { get; set; }
