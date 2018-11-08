@@ -52,7 +52,15 @@ namespace CoffeeShipAPI.Controllers
             rating.LocationId = id;
             db.Ratings.Add(rating);
             db.SaveChanges();
-            return Ok(rating);
+            // update the average
+            // sum the numbers, divide by lenght
+            var average = db.Ratings.Average(a => a.Score);
+            // update the location with the average
+            var shop = db.Locations.SingleOrDefault(sh => sh.Id == id);
+            shop.AverageRating = (float)average;
+            db.SaveChanges();
+
+            return Ok(new { rating = average });
         }
 
 
