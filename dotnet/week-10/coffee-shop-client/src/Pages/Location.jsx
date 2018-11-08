@@ -75,20 +75,41 @@ class Location extends Component {
                 ? "Local"
                 : "National"}
             </h3>
+            <h3>
+              {this.state.location.rating}/5
+            <span role="img" aria-label="Coffee Cup">
+                ☕️️️️️️
+            </span>
+            </h3>
           </section>
         </section>
         <section className="middle-section">
+
           <section>
-            4/5
-            <span role="img" aria-label="Coffee Cup">
-              ☕️️️️️️
-            </span>
-          </section>
-          <section>
-            <input type="range" min="1" max="5" step="0.5" />
-            <button className="button is-primary add-rating-button">
-              Add Rating
+            <button className="button is-dark">
+              <span role="img" aria-label="Coffee Cup">
+                ☕️️️️️️
+              </span>
             </button>
+            <button className="button is-dark">
+              <span role="img" aria-label="Coffee Cup">
+                ☕️️️️️️
+             </span>
+            </button>
+            <button className="button is-dark">
+              <span role="img" aria-label="Coffee Cup">
+                ☕️️️️️️
+            </span>
+            </button>
+            <button className="button is-dark">
+              <span role="img" aria-label="Coffee Cup">☕️️️️️️</span>
+            </button>
+            <button className="button is-dark">
+              <span role="img" aria-label="Coffee Cup">
+                ☕️️️️️️
+            </span>
+            </button>
+           
           </section>
         </section>
         <section className="bottom-section">
