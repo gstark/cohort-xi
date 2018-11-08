@@ -6,6 +6,7 @@ class Location extends Component {
   state = {
     location: {
       imageUrl: "https://placebear.com/128/128",
+      averageRating: 0,
       franchise: {
         brand: "..."
       },
@@ -53,7 +54,11 @@ class Location extends Component {
         score: rating
       })
       .then(json => {
-        console.log({json});
+        let _data = {...this.state.location};
+        _data.averageRating = json.data.rating;
+        this.setState({
+          location:_data
+        })
       })
   }
 
@@ -85,7 +90,7 @@ class Location extends Component {
                 : "National"}
             </h3>
             <h3>
-              {this.state.location.rating}/5
+              {Math.round(this.state.location.averageRating * 100) /100}/5
             <span role="img" aria-label="Coffee Cup">
                 ☕️️️️️️
             </span>
