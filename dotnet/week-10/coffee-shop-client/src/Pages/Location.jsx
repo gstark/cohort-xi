@@ -45,7 +45,16 @@ class Location extends Component {
         this.setState({ location: json.data });
       });
     this.getReviews();
+  }
 
+  addRating = (rating) => {
+    axios
+      .post(`https://localhost:5001/api/locations/${this.props.match.params.id}/ratings`, {
+        score: rating
+      })
+      .then(json => {
+        console.log({json});
+      })
   }
 
   render() {
@@ -86,30 +95,13 @@ class Location extends Component {
         <section className="middle-section">
 
           <section>
-            <button className="button is-dark">
-              <span role="img" aria-label="Coffee Cup">
-                ☕️️️️️️
+            {[1, 2, 3, 4, 5].map(num => {
+              return <button key={num} className="button is-dark" onClick={() => this.addRating(num)}>
+                <span role="img" aria-label="Coffee Cup">
+                  ☕️️️️️️
               </span>
-            </button>
-            <button className="button is-dark">
-              <span role="img" aria-label="Coffee Cup">
-                ☕️️️️️️
-             </span>
-            </button>
-            <button className="button is-dark">
-              <span role="img" aria-label="Coffee Cup">
-                ☕️️️️️️
-            </span>
-            </button>
-            <button className="button is-dark">
-              <span role="img" aria-label="Coffee Cup">☕️️️️️️</span>
-            </button>
-            <button className="button is-dark">
-              <span role="img" aria-label="Coffee Cup">
-                ☕️️️️️️
-            </span>
-            </button>
-           
+              </button>
+            })}
           </section>
         </section>
         <section className="bottom-section">
@@ -122,14 +114,14 @@ class Location extends Component {
           </form>
           <ul>
             {this.state.reviews.map(review => {
-              return <li><article class="media">
-                <figure class="media-left">
-                  <p class="image is-64x64">
-                    <img src="https://bulma.io/images/placeholders/128x128.png" />
+              return <li key={review.id} ><article className="media">
+                <figure className="media-left">
+                  <p className="image is-64x64">
+                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="some place holder"/>
                   </p>
                 </figure>
-                <div class="media-content">
-                  <div class="content">
+                <div className="media-content">
+                  <div className="content">
                     <p>
                       {review.content}
                     </p>
@@ -138,19 +130,6 @@ class Location extends Component {
                       {review.createAt}
                     </p>
                   </div>
-                  <nav class="level is-mobile">
-                    <div class="level-left">
-                      <a class="level-item">
-                        <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                      </a>
-                      <a class="level-item">
-                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                      </a>
-                      <a class="level-item">
-                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                      </a>
-                    </div>
-                  </nav>
                 </div>
               </article></li>
             })}

@@ -7,7 +7,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
 } from "react-router-dom";
 
 class App extends Component {
@@ -75,7 +74,7 @@ class App extends Component {
                 <button type="submit" className="button is-info">Search</button>
               </div>
               <div className="control">
-                <a className="button is-primary">Near me</a>
+                <button className="button is-primary" >Near me</button>
               </div>
             </div>
           </form>
