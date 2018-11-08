@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
+import config from '../Config';
+
 class HomePage extends Component {
   state = {
     locations: []
   };
 
   componentDidMount() {
-    let _url = "https://localhost:5001/api";
+    let _url = config.API_URL;
     console.log(this.props);
     if (this.props.match.params.searchterm) {
       _url += `/search?searchTerm=${this.props.match.params.searchterm}`;

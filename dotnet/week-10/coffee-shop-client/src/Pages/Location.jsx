@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import PriceRange from "./Components/PriceRange";
 
+import config from '../Config';
+
 class Location extends Component {
   state = {
     location: {
@@ -22,7 +24,7 @@ class Location extends Component {
 
   submitReview = (e) => {
     e.preventDefault();
-    axios.post(`https://localhost:5001/api/locations/${this.props.match.params.id}/reviews`, {
+    axios.post(`${config.API_URL}/locations/${this.props.match.params.id}/reviews`, {
       content: this.state.newReview
     }).then(json => {
       this.getReviews();
@@ -31,7 +33,7 @@ class Location extends Component {
 
   getReviews = () => {
     axios
-      .get(`https://localhost:5001/api/locations/${this.props.match.params.id}/reviews`)
+      .get(`${config.API_URL}/locations/${this.props.match.params.id}/reviews`)
       .then(json => {
         this.setState({
           reviews: json.data
@@ -41,7 +43,7 @@ class Location extends Component {
 
   componentDidMount() {
     axios
-      .get(`https://localhost:5001/api/locations/${this.props.match.params.id}`)
+      .get(`${config.API_URL}/locations/${this.props.match.params.id}`)
       .then(json => {
         this.setState({ location: json.data });
       });
@@ -50,7 +52,7 @@ class Location extends Component {
 
   addRating = (rating) => {
     axios
-      .post(`https://localhost:5001/api/locations/${this.props.match.params.id}/ratings`, {
+      .post(`${config.API_URL}/locations/${this.props.match.params.id}/ratings`, {
         score: rating
       })
       .then(json => {
