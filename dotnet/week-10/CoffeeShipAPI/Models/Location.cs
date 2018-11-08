@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CoffeeShipAPI.Models
@@ -17,7 +18,6 @@ namespace CoffeeShipAPI.Models
 
         public string PhoneNumber { get; set; }
 
-        public int Rating { get; set; }
         public PriceRange PriceRange { get; set; }
 
         public string ImageUrl { get; set; }
@@ -25,6 +25,8 @@ namespace CoffeeShipAPI.Models
         public int FranchiseId { get; set; }
 
         public Franchise Franchise { get; set; }
+
+        public List<Rating> Ratings { get; set; } = new List<Rating>();
      
     }
 }
