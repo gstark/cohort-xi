@@ -44,5 +44,19 @@ namespace CoffeeShipAPI.Controllers
             db.SaveChanges();
             return Ok(review);
         }
+
+        [HttpPost("{id}/ratings")]
+        public ActionResult AddRating([FromRoute] int id, [FromBody] Rating rating)
+        {
+            var db = new CoffeeShopFinderContext();
+            rating.LocationId = id;
+            db.Ratings.Add(rating);
+            db.SaveChanges();
+            return Ok(rating);
+        }
+
+
+
+
     }
 }
