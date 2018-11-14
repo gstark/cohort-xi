@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-// import SplashPage from './Pages/Splash'
+
+import SplashPage from './Pages/Splash'
 import HomePage from "./Pages/Home";
 import Location from "./Pages/Location";
 import Callback from './Pages/Callback';
+
 import {
   Router,
   Route,
@@ -72,7 +74,7 @@ class App extends Component {
                         </div>
                     </div> */}
           </nav>
-          <form onSubmit={this.handleSearch} className="search-form">
+        { auth.isAuthenticated() && <form onSubmit={this.handleSearch} className="search-form">
             <div className="field has-addons">
               <div className="control">
                 <input
@@ -90,9 +92,10 @@ class App extends Component {
               </div>
             </div>
           </form>
-
+        }
           <Switch>
-            <Route path="/" exact render={(props) => <HomePage auth={auth} {...props} />} />
+            <Route path="/" exact render={(props) => <SplashPage auth={auth} {...props} />} />
+            <Route path="/home" exact render={(props) => <HomePage auth={auth} {...props} />} />
             <Route path="/location/:id" exact render={(props) => <Location auth={auth} {...props}/>} />
             <Route path="/search/:searchterm" exact render={(props) => <HomePage auth={auth} {...props} />} />
             <Route path="/callback" exact render={(props) => {

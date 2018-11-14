@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class SplashPage extends Component {
+
+    doesLogin = () => {
+        this.props.auth.login()
+    }
+
     render() {
         return (
-            <section class="hero is-medium is-dark is-bold">
-                <div class="hero-body">
-                    <div class="container">
-                        <h1 class="title">
+            <section className="hero is-medium is-dark is-bold">
+                <div className="hero-body">
+                    <div className="container">
+                        <h1 className="title">
                             Lets find some coffee shops
                         </h1>
-                        <h2 class="subtitle">
-                            <Link to="/home">Start</Link>
+                        <h2 className="subtitle">
+                            <button className="button is-light" onClick={this.doesLogin}>Log In</button>
                         </h2>
                     </div>
                 </div>

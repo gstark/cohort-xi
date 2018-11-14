@@ -20,7 +20,7 @@ namespace CoffeeShipAPI
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? "server=localhost;database=CoffeeShopFinder;User Id=postgres; Password=admin";
+                var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? "server=localhost;database=CoffeeShopFinder;";
 
                 optionsBuilder.UseNpgsql(connectionString);
             }

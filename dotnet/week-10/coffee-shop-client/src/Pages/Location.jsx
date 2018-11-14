@@ -6,6 +6,8 @@ import config from '../Config';
 
 class Location extends Component {
   state = {
+    showReviewForm:true,
+    profile: {},
     location: {
       imageUrl: "https://placebear.com/128/128",
       averageRating: 0,
@@ -24,8 +26,15 @@ class Location extends Component {
 
   submitReview = (e) => {
     e.preventDefault();
-    axios.post(`${config.API_URL}/locations/${this.props.match.params.id}/reviews`, {
-      content: this.state.newReview
+    axios.post(
+        `${config.API_URL}/locations/${this.props.match.params.id}/reviews`, {
+      content: this.state.newReview,
+      reviewerName: this.state.profile.name,
+      reviewerPhoto: this.state.profile.picture
+    }, {
+      headers:{
+        "Authorization":"Bearer " + this.props.auth.getAccessToken()
+      }
     }).then(json => {
       this.getReviews();
     })
@@ -41,6 +50,30 @@ class Location extends Component {
       })
   }
 
+  disableReviewForm = () => {
+    this.setState({
+      showReviewForm:false
+    })
+  }
+
+  checkIfUserLeftAReview = () => {
+    // GET /api/locations/id/reviews/userid
+    axios
+      .get(`${config.API_URL}/locations/${this.props.match.params.id}/reviews/${this.state.profile.sub}`)
+      .then(json => {
+        console.log({ json });
+        if (json.data.wasFound) {
+          this.disableReviewForm();
+        }
+      })
+  }
+
+  addUserToState = () => {
+    this.props.auth.getProfile((err, profile) => {
+      this.setState({ profile });
+      this.checkIfUserLeftAReview();
+    })
+  }
   componentDidMount() {
     axios
       .get(`${config.API_URL}/locations/${this.props.match.params.id}`)
@@ -48,6 +81,7 @@ class Location extends Component {
         this.setState({ location: json.data });
       });
     this.getReviews();
+    this.addUserToState();
   }
 
   addRating = (rating) => {
@@ -56,10 +90,10 @@ class Location extends Component {
         score: rating
       })
       .then(json => {
-        let _data = {...this.state.location};
+        let _data = { ...this.state.location };
         _data.averageRating = json.data.rating;
         this.setState({
-          location:_data
+          location: _data
         })
       })
   }
@@ -92,7 +126,7 @@ class Location extends Component {
                 : "National"}
             </h3>
             <h3>
-              {Math.round(this.state.location.averageRating * 100) /100}/5
+              {Math.round(this.state.location.averageRating * 100) / 100}/5
             <span role="img" aria-label="Coffee Cup">
                 ☕️️️️️️
             </span>
@@ -102,39 +136,46 @@ class Location extends Component {
         <section className="middle-section">
 
           <section>
-            {[1, 2, 3, 4, 5].map(num => {
+            <fieldset className="rating">
+              <input type="radio" id="star5" name="rating" value="5" onChange={() => this.addRating(5)} /><label className="full" htmlFor="star5" title="Awesome - 5 stars"></label>
+              <input type="radio" id="star4" name="rating" value="4" onChange={() => this.addRating(4)} /><label className="full" htmlFor="star4" title="Pretty good - 4 stars"></label>
+              <input type="radio" id="star3" name="rating" value="3" onChange={() => this.addRating(3)} /><label className="full" htmlFor="star3" title="Meh - 3 stars"></label>
+              <input type="radio" id="star2" name="rating" value="2" onChange={() => this.addRating(2)} /><label className="full" htmlFor="star2" title="Kinda bad - 2 stars"></label>
+              <input type="radio" id="star1" name="rating" value="1" onChange={() => this.addRating(1)} /><label className="full" htmlFor="star1" title="Sucks big time - 1 star"></label>
+            </fieldset>
+
+            {/* {[1, 2, 3, 4, 5].map(num => {
               return <button key={num} className="button is-dark" onClick={() => this.addRating(num)}>
                 <span role="img" aria-label="Coffee Cup">
                   ☕️️️️️️
               </span>
               </button>
-            })}
+            })} */}
           </section>
         </section>
         <section className="bottom-section">
-          <form onSubmit={this.submitReview}>
-            <header>Reviews!?!?!</header>
-            <textarea onChange={this.onReviewChange} placeholder={`Leave a review for ${this.state.location.franchise.brand}`} />
+          {this.props.auth.isAuthenticated() && this.state.showReviewForm &&  <form onSubmit={this.submitReview}>
+            <header>Leave a review as {this.state.profile.name}</header>
+            <textarea onChange={this.onReviewChange} placeholder={`Leave a review for  ${this.state.location.franchise.brand}`} />
             <button className="button is-primary add-review-button">
               Submit
             </button>
           </form>
+          }
           <ul>
             {this.state.reviews.map(review => {
               return <li key={review.id} ><article className="media">
                 <figure className="media-left">
                   <p className="image is-64x64">
-                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="some place holder"/>
+                    <img src={review.reviewerPhoto} alt="some place holder" />
                   </p>
                 </figure>
                 <div className="media-content">
                   <div className="content">
                     <p>
                       {review.content}
-                    </p>
-                    <br />
-                    <p>
-                      {review.createAt}
+                      {review.createdAt}
+                      reviewed by: {review.reviewerName}
                     </p>
                   </div>
                 </div>
