@@ -3,11 +3,24 @@ import "./App.css";
 // import SplashPage from './Pages/Splash'
 import HomePage from "./Pages/Home";
 import Location from "./Pages/Location";
+import Callback from './Pages/Callback';
 import {
-  BrowserRouter as Router,
+  Router,
   Route,
   Switch,
 } from "react-router-dom";
+
+import Auth from './Auth/Auth';
+import history from './history';
+
+const auth = new Auth();
+
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+}
+
 
 class App extends Component {
   state = {
@@ -19,17 +32,16 @@ class App extends Component {
   };
   handleSearch = e => {
     e.preventDefault();
-    if (this.state.searchTerm){
+    if (this.state.searchTerm) {
       window.location.replace(`/search/${this.state.searchTerm}`);
     } else {
       window.location.replace(`/`);
-
     }
   };
 
   render() {
     return (
-      <Router>
+      <Router  history={history} component={App}>
         <>
           <nav
             className="navbar is-dark"
@@ -80,10 +92,13 @@ class App extends Component {
           </form>
 
           <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/location/:id" exact component={Location} />
-            <Route path="/search/:searchterm" exact component={HomePage} />
-            {/* <Route path="/home" exact component={HomePage}/> */}
+            <Route path="/" exact render={(props) => <HomePage auth={auth} {...props} />} />
+            <Route path="/location/:id" exact render={(props) => <Location auth={auth} {...props}/>} />
+            <Route path="/search/:searchterm" exact render={(props) => <HomePage auth={auth} {...props} />} />
+            <Route path="/callback" exact render={(props) => {
+              handleAuthentication(props);
+              return <Callback {...props} />
+            }} />
           </Switch>
         </>
       </Router>

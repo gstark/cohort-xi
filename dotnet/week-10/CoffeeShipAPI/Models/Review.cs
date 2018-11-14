@@ -9,6 +9,10 @@ namespace CoffeeShipAPI.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
+        public string UserId { get; set; }
+        public string ReviewerName { get; set; }
+        public string ReviewerPhoto { get; set; }
+
         public int LocationId { get; set; }
         public Location Location { get; set; }
 
