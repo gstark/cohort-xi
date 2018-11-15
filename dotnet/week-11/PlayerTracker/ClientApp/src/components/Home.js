@@ -43,12 +43,26 @@ export class Home extends Component {
 
   deletePlayer = (playerId) => {
     axios
-    .delete("/api/players/" + playerId)
-    .then(json => {
-      this.setState({
-        players: this.state.players.filter(player => player.id != playerId)
+      .delete("/api/players/" + playerId)
+      .then(json => {
+        this.setState({
+          players: this.state.players.filter(player => player.id !== playerId)
+        })
       })
-    })
+  }
+
+  updatePlayerInit = (e, playerId) => {
+    const index = this.state.players.findIndex(f => f.id === playerId);
+    const player = this.state.players[index];
+    const players = [...this.state.players];
+    player.lastInitiative = parseInt(e.target.value, 10);
+    players[index] = player;
+    this.setState({ players });
+  }
+
+  savePlayerInit = (e, playerId) => {
+    axios
+      .post(`/api/players/${playerId}/initiative/${e.target.value}`)
   }
 
   render() {
@@ -65,9 +79,17 @@ export class Home extends Component {
         <section>
           <ul>
             {this.state.players.map(player => {
-              return <li key={player.id}>
+              return <li key={player.id} className="">
                 <span>{player.playerName}</span>
-                <span> <input placeholder="init" /> </span>
+                <span>
+                  <input
+                    placeholder="init"
+                    value={player.lastInitiative}
+                    onBlur={(e) => this.savePlayerInit(e, player.id)}
+                    onChange={(e) => this.updatePlayerInit(e, player.id)}
+                    type="number"
+                    className="init-input" />
+                </span>
                 <span><button onClick={() => this.deletePlayer(player.id)}>remove</button></span>
               </li>
             })}
