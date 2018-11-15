@@ -7,7 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace PlayerTracker
-{
+{  
+
+    //oh hi mark
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -65,3 +67,47 @@ namespace PlayerTracker
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
