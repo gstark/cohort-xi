@@ -65,12 +65,28 @@ export class Home extends Component {
       .post(`/api/players/${playerId}/initiative/${e.target.value}`)
   }
 
+  sortPlayers = () => {
+    const players = [...this.state.players].sort((a, b) => {
+      if (a.lastInitiative > b.lastInitiative) {
+        return -1
+      } else if (a.lastInitiative < b.lastInitiative) {
+        return 1;
+      }
+      else {
+        return 0;
+      }
+    });
+    console.log(players)
+    this.setState({ players })
+
+  }
+
   render() {
     return (
       <div>
         <h1>Init Tracker</h1>
         <section>
-          <button>sort</button>
+          <button onClick={this.sortPlayers}>sort</button>
           <form onSubmit={this.addPlayerToGame}>
             <input placeholder="Add new player" onChange={this.handleNewPlayerNameChange} />
             <button>Add player</button>
